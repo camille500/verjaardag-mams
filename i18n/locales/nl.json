@@ -1,0 +1,62 @@
+{
+  "hero": {
+    "title": "Je bent uitgenodigd!",
+    "subtitle": "Voor de verjaardag van",
+    "name": "Petra",
+    "day": "18",
+    "month": "April",
+    "year": "2025"
+  },
+  "about": {
+    "title": "Over het feest",
+    "intro": "Het feest van Petra begint steeds meer vorm te krijgen! Op 18 april om [tijd volgt nog] gaan we er een groot feest van maken bij De Walvis in Amsterdam.",
+    "text": "We vieren dit bijzondere moment graag samen met jou! Kom gezellig langs voor een middag vol plezier, lekker eten en mooie herinneringen.",
+    "about_petra": "Zoals jullie weten is mama altijd degene die voor anderen klaarstaat — van goede doelen tot iedereen om haar heen. Voor haar 60e verjaardag draaien we het een keer om: dit keer zamelen wíj iets in voor háár!",
+    "entertainment": "We hebben een geweldige live band geregeld die de avond extra bijzonder maakt. Deze band speelt normaal op Vlieland en brengt de hele avond heerlijke covers waar we fantastisch op kunnen dansen!",
+    "contribution_title": "Bijdrage",
+    "contribution_text": "Daarom vragen we iedereen om een bijdrage via de Tikkie-link onder vermelding van je naam.",
+    "tikkie_button": "Bijdragen via Tikkie",
+    "gift_note": "Natuurlijk kun je daarnaast ook gewoon een cadeautje meenemen — dat blijft even welkom!",
+    "closing": "Dankjewel dat je meedoet. Samen geven we haar een feest dat helemaal bij haar past."
+  },
+  "rsvp": {
+    "title": "RSVP",
+    "intro": "Laat ons weten of je erbij kunt zijn!",
+    "name": "Naam",
+    "namePlaceholder": "Je volledige naam",
+    "email": "E-mailadres",
+    "emailPlaceholder": "je{'@'}email.nl",
+    "attending": "Kom je?",
+    "yes": "Ja, ik kom!",
+    "no": "Helaas, ik kan niet",
+    "guests": "Met hoeveel personen kom je?",
+    "person": "persoon | personen",
+    "contribution": "Wil je een bijdrage leveren? (optioneel)",
+    "contributionPlaceholder": "Bijv. een liedje zingen, speech houden, hulp bij organisatie...",
+    "message": "Bericht (optioneel)",
+    "messagePlaceholder": "Wil je nog iets kwijt?",
+    "submit": "Verstuur RSVP",
+    "submitting": "Versturen...",
+    "success": "Bedankt voor je reactie! We hebben je RSVP ontvangen."
+  },
+  "location": {
+    "title": "Locatie",
+    "address": "Adres",
+    "venueName": "De Walvis",
+    "street": "Grote Bickersstraat 74",
+    "city": "1013 KS Amsterdam",
+    "directions": "Hoe kom je er?",
+    "byCar": "Met de auto",
+    "carInfo": "De locatie is gemakkelijk bereikbaar met de auto, er zijn voldoende gratis parkeermogelijkheden.",
+    "byTransit": "Met het OV",
+    "transitInfo": "De locatie is op c.a. 20 minuten loopafstand van Amsterdam Centraal. Ook goed bereikbaar met bus v.a. station"
+  },
+  "footer": {
+    "text": "We kijken ernaar uit je te zien!"
+  },
+  "nav": {
+    "about": "Over",
+    "rsvp": "RSVP",
+    "location": "Locatie"
+  }
+}
