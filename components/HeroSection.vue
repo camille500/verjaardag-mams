@@ -7,29 +7,118 @@
 
     <LanguageToggle class="lang-toggle" />
 
-    <!-- Floating decorative elements -->
+    <!-- Floating hippie decorative elements -->
     <div class="floating-elements">
-      <div class="float-element flower" v-for="n in 5" :key="'flower-' + n" :style="getFloatStyle(n)">
+      <!-- Colorful flowers -->
+      <div class="float-element flower flower-1">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="10" fill="#F4A261"/>
+          <g fill="#E76F51">
+            <ellipse cx="50" cy="22" rx="10" ry="16" />
+            <ellipse cx="50" cy="78" rx="10" ry="16" />
+            <ellipse cx="22" cy="50" rx="16" ry="10" />
+            <ellipse cx="78" cy="50" rx="16" ry="10" />
+            <ellipse cx="30" cy="30" rx="10" ry="16" transform="rotate(-45 30 30)" />
+            <ellipse cx="70" cy="30" rx="10" ry="16" transform="rotate(45 70 30)" />
+            <ellipse cx="30" cy="70" rx="10" ry="16" transform="rotate(45 30 70)" />
+            <ellipse cx="70" cy="70" rx="10" ry="16" transform="rotate(-45 70 70)" />
+          </g>
+        </svg>
+      </div>
+      <div class="float-element flower flower-2">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="8" fill="#E9C46A"/>
+          <g fill="#2A9D8F">
+            <ellipse cx="50" cy="25" rx="8" ry="14" />
+            <ellipse cx="50" cy="75" rx="8" ry="14" />
+            <ellipse cx="25" cy="50" rx="14" ry="8" />
+            <ellipse cx="75" cy="50" rx="14" ry="8" />
+          </g>
+        </svg>
+      </div>
+      <div class="float-element flower flower-3">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="12" fill="#F4A261"/>
+          <g fill="#E9C46A">
+            <ellipse cx="50" cy="20" rx="12" ry="18" />
+            <ellipse cx="50" cy="80" rx="12" ry="18" />
+            <ellipse cx="20" cy="50" rx="18" ry="12" />
+            <ellipse cx="80" cy="50" rx="18" ry="12" />
+          </g>
+        </svg>
+      </div>
+      <div class="float-element flower flower-4">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="8" fill="#2A9D8F"/>
+          <g fill="#E76F51">
+            <ellipse cx="50" cy="28" rx="8" ry="12" />
+            <ellipse cx="50" cy="72" rx="8" ry="12" />
+            <ellipse cx="28" cy="50" rx="12" ry="8" />
+            <ellipse cx="72" cy="50" rx="12" ry="8" />
+          </g>
+        </svg>
+      </div>
+      <!-- Peace symbols -->
+      <div class="float-element peace peace-1">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4">
+          <circle cx="50" cy="50" r="45" />
+          <line x1="50" y1="5" x2="50" y2="95" />
+          <line x1="50" y1="50" x2="20" y2="80" />
+          <line x1="50" y1="50" x2="80" y2="80" />
+        </svg>
+      </div>
+      <div class="float-element peace peace-2">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4">
+          <circle cx="50" cy="50" r="45" />
+          <line x1="50" y1="5" x2="50" y2="95" />
+          <line x1="50" y1="50" x2="20" y2="80" />
+          <line x1="50" y1="50" x2="80" y2="80" />
+        </svg>
+      </div>
+      <!-- Groovy stars -->
+      <div class="float-element star star-1">
         <svg viewBox="0 0 24 24" fill="currentColor">
-          <circle cx="12" cy="12" r="2.5"/>
-          <ellipse cx="12" cy="5" rx="2.5" ry="4"/>
-          <ellipse cx="12" cy="19" rx="2.5" ry="4"/>
-          <ellipse cx="5" cy="12" rx="4" ry="2.5"/>
-          <ellipse cx="19" cy="12" rx="4" ry="2.5"/>
+          <polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/>
+        </svg>
+      </div>
+      <div class="float-element star star-2">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15,9 22,9 17,14 19,22 12,17 5,22 7,14 2,9 9,9"/>
         </svg>
       </div>
     </div>
 
-    <div class="hero-content" :class="{ visible: contentVisible }">
+    <div class="hero-content">
       <div class="hero-inner">
+        <!-- Hippie badge -->
+        <!-- <div class="hippie-badge"> -->
+          <!-- <span class="badge-text">Peace & Love</span> -->
+        <!-- </div> -->
+
         <h1 class="hero-title">{{ $t('hero.title') }}</h1>
 
         <p class="hero-eyebrow">{{ $t('hero.subtitle') }}</p>
 
         <div class="hero-name">
-          <span class="name-line"></span>
+          <span class="name-flower">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="3" fill="#F4A261"/>
+              <ellipse cx="12" cy="5" rx="3" ry="5" fill="#E76F51"/>
+              <ellipse cx="12" cy="19" rx="3" ry="5" fill="#E76F51"/>
+              <ellipse cx="5" cy="12" rx="5" ry="3" fill="#E76F51"/>
+              <ellipse cx="19" cy="12" rx="5" ry="3" fill="#E76F51"/>
+            </svg>
+          </span>
           <h2>{{ $t('hero.name') }}</h2>
-          <span class="name-line"></span>
+          <span class="name-flower">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="3" fill="#F4A261"/>
+              <ellipse cx="12" cy="5" rx="3" ry="5" fill="#E76F51"/>
+              <ellipse cx="12" cy="19" rx="3" ry="5" fill="#E76F51"/>
+              <ellipse cx="5" cy="12" rx="5" ry="3" fill="#E76F51"/>
+              <ellipse cx="19" cy="12" rx="5" ry="3" fill="#E76F51"/>
+            </svg>
+          </span>
         </div>
 
         <div class="hero-date">
@@ -64,36 +153,11 @@
 </template>
 
 <script setup lang="ts">
-const contentVisible = ref(false)
 const ctaHover = ref(false)
-
-const getFloatStyle = (n: number) => {
-  const positions = [
-    { left: '5%', top: '20%', size: '24px', delay: '0s', duration: '6s' },
-    { left: '85%', top: '15%', size: '20px', delay: '1s', duration: '7s' },
-    { left: '10%', top: '70%', size: '18px', delay: '2s', duration: '5s' },
-    { left: '90%', top: '65%', size: '22px', delay: '0.5s', duration: '8s' },
-    { left: '50%', top: '85%', size: '16px', delay: '1.5s', duration: '6s' },
-  ]
-  const pos = positions[n - 1]
-  return {
-    left: pos.left,
-    top: pos.top,
-    '--size': pos.size,
-    '--delay': pos.delay,
-    '--duration': pos.duration,
-  }
-}
 
 const scrollToAbout = () => {
   document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
 }
-
-onMounted(() => {
-  setTimeout(() => {
-    contentVisible.value = true
-  }, 100)
-})
 </script>
 
 <style scoped>
@@ -118,7 +182,7 @@ onMounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 10%;
+  object-position: center 27.5%;
   opacity: 0;
   transform: scale(1.1);
   transition: opacity 1.2s ease, transform 1.5s ease;
@@ -129,7 +193,7 @@ onMounted(() => {
   transform: scale(1);
 }
 
-/* Floating decorative elements */
+/* Floating hippie decorative elements */
 .floating-elements {
   position: absolute;
   inset: 0;
@@ -139,10 +203,7 @@ onMounted(() => {
 
 .float-element {
   position: absolute;
-  width: var(--size);
-  height: var(--size);
-  color: rgba(255, 255, 255, 0.15);
-  animation: float var(--duration) ease-in-out var(--delay) infinite;
+  opacity: 0.6;
 }
 
 .float-element svg {
@@ -150,31 +211,130 @@ onMounted(() => {
   height: 100%;
 }
 
-@keyframes float {
+/* Colorful flowers */
+.flower-1 {
+  left: 5%;
+  top: 15%;
+  width: 60px;
+  height: 60px;
+  animation: float-flower 7s ease-in-out infinite;
+}
+
+.flower-2 {
+  right: 8%;
+  top: 20%;
+  width: 45px;
+  height: 45px;
+  animation: float-flower 8s ease-in-out 1s infinite reverse;
+}
+
+.flower-3 {
+  left: 8%;
+  bottom: 25%;
+  width: 50px;
+  height: 50px;
+  animation: float-flower 6s ease-in-out 0.5s infinite;
+}
+
+.flower-4 {
+  right: 5%;
+  bottom: 30%;
+  width: 40px;
+  height: 40px;
+  animation: float-flower 9s ease-in-out 1.5s infinite reverse;
+}
+
+/* Peace symbols */
+.peace {
+  color: rgba(233, 196, 106, 0.4);
+}
+
+.peace-1 {
+  left: 15%;
+  top: 35%;
+  width: 35px;
+  height: 35px;
+  animation: float-peace 10s ease-in-out infinite;
+}
+
+.peace-2 {
+  right: 12%;
+  bottom: 45%;
+  width: 28px;
+  height: 28px;
+  animation: float-peace 12s ease-in-out 2s infinite reverse;
+}
+
+/* Groovy stars */
+.star {
+  color: rgba(244, 162, 97, 0.5);
+}
+
+.star-1 {
+  left: 20%;
+  bottom: 15%;
+  width: 20px;
+  height: 20px;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.star-2 {
+  right: 18%;
+  top: 40%;
+  width: 16px;
+  height: 16px;
+  animation: twinkle 5s ease-in-out 1s infinite;
+}
+
+@keyframes float-flower {
   0%, 100% {
     transform: translateY(0) rotate(0deg);
   }
   25% {
-    transform: translateY(-15px) rotate(5deg);
+    transform: translateY(-20px) rotate(8deg);
   }
   50% {
-    transform: translateY(-8px) rotate(-3deg);
+    transform: translateY(-10px) rotate(-5deg);
   }
   75% {
-    transform: translateY(-20px) rotate(3deg);
+    transform: translateY(-25px) rotate(5deg);
+  }
+}
+
+@keyframes float-peace {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(15deg);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2) rotate(180deg);
   }
 }
 
 /* Hero content animations */
 .hero-content {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+  animation: content-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
-.hero-content.visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes content-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Title animation */
@@ -226,6 +386,34 @@ onMounted(() => {
   gap: 1.5rem;
 }
 
+/* Hippie badge */
+.hippie-badge {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(135deg, rgba(231, 111, 81, 0.9) 0%, rgba(244, 162, 97, 0.9) 100%);
+  border-radius: 30px;
+  margin-bottom: 0.5rem;
+  animation: badge-glow 3s ease-in-out infinite;
+}
+
+.badge-text {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: white;
+}
+
+@keyframes badge-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(231, 111, 81, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(244, 162, 97, 0.6);
+  }
+}
+
 .hero-eyebrow {
   font-family: var(--font-body);
   font-size: 0.75rem;
@@ -249,14 +437,28 @@ onMounted(() => {
 .hero-name {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-top: 0.25rem;
 }
 
-.name-line {
-  width: 60px;
-  height: 1px;
-  background: var(--accent);
+.name-flower {
+  width: 32px;
+  height: 32px;
+  animation: spin-slow 8s linear infinite;
+}
+
+.name-flower svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .hero-name h2 {
@@ -278,11 +480,12 @@ onMounted(() => {
   align-items: center;
   gap: 1rem;
   padding: 1.25rem 2.5rem;
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(231, 111, 81, 0.2) 0%, rgba(233, 196, 106, 0.2) 50%, rgba(42, 157, 143, 0.2) 100%);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(233, 196, 106, 0.4);
   border-radius: 100px;
+  box-shadow: 0 0 30px rgba(231, 111, 81, 0.2);
 }
 
 .date-number {
@@ -323,7 +526,7 @@ onMounted(() => {
   margin-top: 1rem;
   padding: 1rem 2rem;
   background: transparent;
-  color: var(--gray-900);
+  color: white;
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 600;
@@ -333,13 +536,13 @@ onMounted(() => {
   border-radius: 100px;
   transition: var(--transition-slow);
   overflow: hidden;
-  animation: cta-pulse 3s ease-in-out infinite;
+  animation: cta-pulse-hippie 3s ease-in-out infinite;
 }
 
 .cta-bg {
   position: absolute;
   inset: 0;
-  background: var(--white);
+  background: linear-gradient(135deg, #E76F51 0%, #F4A261 100%);
   border-radius: 100px;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 0;
@@ -357,13 +560,13 @@ onMounted(() => {
 }
 
 .hero-cta:hover {
-  color: var(--white);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(231, 111, 81, 0.4);
 }
 
 .hero-cta:hover .cta-bg {
-  background: var(--accent);
+  background: linear-gradient(135deg, #2A9D8F 0%, #264653 100%);
   transform: scale(1.05);
 }
 
@@ -371,12 +574,12 @@ onMounted(() => {
   transform: translateX(4px);
 }
 
-@keyframes cta-pulse {
+@keyframes cta-pulse-hippie {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 0 0 rgba(231, 111, 81, 0.5);
   }
   50% {
-    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 15px rgba(231, 111, 81, 0);
   }
 }
 
