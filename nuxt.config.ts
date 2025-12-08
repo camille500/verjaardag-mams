@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // Server-side only (not exposed to client)
     // Credentials are automatically provided by AWS Amplify via IAM role
-    awsRegion: process.env.AWS_REGION || 'eu-west-1',
+    awsRegion: process.env.REGION || 'eu-central-1',
     dynamodbTableName: process.env.DYNAMODB_TABLE_NAME || 'party-rsvps',
     sesFromEmail: process.env.SES_FROM_EMAIL || 'noreply@example.com'
   },

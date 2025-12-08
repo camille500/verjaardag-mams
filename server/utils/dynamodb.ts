@@ -6,7 +6,7 @@ const config = useRuntimeConfig()
 // When running in AWS (Amplify), credentials are automatically provided via IAM role
 // For local development, use AWS CLI credentials or environment variables
 const client = new DynamoDBClient({
-  region: config.awsRegion || 'eu-west-1'
+  region: config.awsRegion || 'eu-central-1'
 })
 
 const docClient = DynamoDBDocumentClient.from(client)
