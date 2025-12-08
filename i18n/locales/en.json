@@ -11,7 +11,7 @@
     "title": "About the party",
     "intro": "Petra's party is really taking shape! On April 18th at [time TBD] we're throwing a big celebration at De Walvis in Amsterdam.",
     "text": "We would love to celebrate this special moment with you! Come join us for an afternoon full of fun, delicious food and beautiful memories.",
-    "about_petra": "As you know, mom is always the one who's there for others — from charities to everyone around her. For her 60th birthday, we're turning the tables: this time, we're collecting something for her!",
+    "about_petra": "As you know, Petra is always the one who's there for others — from charities to everyone around her. For her 60th birthday, we're turning the tables: this time, we're collecting something for her!",
     "entertainment": "We've arranged an amazing live band to make the evening extra special. This band usually plays on Vlieland and will bring wonderful covers all evening that we can dance to!",
     "contribution_title": "Contribution",
     "contribution_text": "That's why we're asking everyone to contribute via the Tikkie link with your name mentioned.",
@@ -47,9 +47,9 @@
     "city": "1013 KS Amsterdam",
     "directions": "How to get there?",
     "byCar": "By car",
-    "carInfo": "Navigate to \"Grote Bickersstraat 74, Amsterdam\". Paid parking available nearby.",
+    "carInfo": "The venue is easily accessible by car, with plenty of free parking available.",
     "byTransit": "By public transport",
-    "transitInfo": "Approximately 38 minutes by public transport or 57 minutes walking from Amsterdam Centraal."
+    "transitInfo": "The venue is approximately a 20-minute walk from Amsterdam Centraal. Also easily accessible by bus from the station."
   },
   "footer": {
     "text": "We look forward to seeing you!"
