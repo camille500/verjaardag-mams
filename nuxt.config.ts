@@ -20,7 +20,8 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'nl',
     langDir: 'locales',
-    strategy: 'no_prefix'
+    strategy: 'no_prefix',
+    detectBrowserLanguage: false
   },
 
   app: {
