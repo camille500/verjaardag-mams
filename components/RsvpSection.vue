@@ -7,52 +7,81 @@
         <h2 class="section-title">{{ $t('rsvp.intro') }}</h2>
       </div>
 
-      <form
-        @submit.prevent="submitRsvp"
-        class="form"
-        :class="{ visible: isVisible }"
-      >
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">{{ $t('rsvp.name') }} <span class="required">*</span></label>
-            <input
-              type="text"
-              id="name"
-              v-model="form.name"
-              required
-              :placeholder="$t('rsvp.namePlaceholder')"
-            />
+      <!-- Success state with animation -->
+      <Transition name="success-reveal">
+        <div v-if="submitSuccess" class="success-container">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+          </div>
+          <h3 class="success-title">{{ $t('rsvp.successTitle') }}</h3>
+          <p class="success-text">{{ $t('rsvp.success') }}</p>
+
+          <!-- Share Memories CTA -->
+          <div class="memories-cta">
+            <p class="memories-intro">{{ $t('rsvp.memoriesIntro') }}</p>
+            <NuxtLink :to="`/herinneringen/${rsvpId}`" class="memories-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <path d="M21 15l-5-5L5 21"/>
+              </svg>
+              {{ $t('rsvp.shareMemories') }}
+            </NuxtLink>
           </div>
 
-          <div class="form-group">
-            <label for="email">{{ $t('rsvp.email') }} <span class="required">*</span></label>
-            <input
-              type="email"
-              id="email"
-              v-model="form.email"
-              required
-              :placeholder="$t('rsvp.emailPlaceholder')"
-            />
-          </div>
+          <button @click="resetForm" class="new-rsvp-btn">{{ $t('rsvp.newRsvp') }}</button>
         </div>
+      </Transition>
 
-        <div class="form-group">
-          <label>{{ $t('rsvp.attending') }} <span class="required">*</span></label>
-          <div class="radio-group">
-            <label class="radio-option" :class="{ selected: form.attending === 'yes' }">
-              <input type="radio" v-model="form.attending" value="yes" required />
-              <span class="radio-label">{{ $t('rsvp.yes') }}</span>
-            </label>
-            <label class="radio-option" :class="{ selected: form.attending === 'no' }">
-              <input type="radio" v-model="form.attending" value="no" />
-              <span class="radio-label">{{ $t('rsvp.no') }}</span>
-            </label>
+      <Transition name="form-fade">
+        <form
+          v-if="!submitSuccess"
+          @submit.prevent="submitRsvp"
+          class="form"
+          :class="{ visible: isVisible }"
+        >
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">{{ $t('rsvp.name') }} <span class="required">*</span></label>
+              <input
+                type="text"
+                id="name"
+                v-model="form.name"
+                required
+                :placeholder="$t('rsvp.namePlaceholder')"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">{{ $t('rsvp.email') }} <span class="required">*</span></label>
+              <input
+                type="email"
+                id="email"
+                v-model="form.email"
+                required
+                :placeholder="$t('rsvp.emailPlaceholder')"
+              />
+            </div>
           </div>
-        </div>
 
-        <Transition name="slide">
-          <div v-if="form.attending === 'yes'" class="conditional-fields">
-            <div class="form-row">
+          <div class="form-group">
+            <label>{{ $t('rsvp.attending') }} <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-option" :class="{ selected: form.attending === 'yes' }">
+                <input type="radio" v-model="form.attending" value="yes" required />
+                <span class="radio-label">{{ $t('rsvp.yes') }}</span>
+              </label>
+              <label class="radio-option" :class="{ selected: form.attending === 'no' }">
+                <input type="radio" v-model="form.attending" value="no" />
+                <span class="radio-label">{{ $t('rsvp.no') }}</span>
+              </label>
+            </div>
+          </div>
+
+          <Transition name="slide">
+            <div v-if="form.attending === 'yes'" class="conditional-fields">
               <div class="form-group">
                 <label for="guests">{{ $t('rsvp.guests') }} <span class="required">*</span></label>
                 <select id="guests" v-model="form.guests" required>
@@ -63,58 +92,39 @@
                   <option value="5">5+ {{ $t('rsvp.person', 2) }}</option>
                 </select>
               </div>
-
-              <div class="form-group">
-                <label for="contribution">{{ $t('rsvp.contribution') }}</label>
-                <input
-                  type="text"
-                  id="contribution"
-                  v-model="form.contribution"
-                  :placeholder="$t('rsvp.contributionPlaceholder')"
-                />
-              </div>
             </div>
+          </Transition>
+
+          <div class="form-group">
+            <label for="message">{{ $t('rsvp.message') }}</label>
+            <textarea
+              id="message"
+              v-model="form.message"
+              :placeholder="$t('rsvp.messagePlaceholder')"
+              rows="4"
+            ></textarea>
           </div>
-        </Transition>
 
-        <div class="form-group">
-          <label for="message">{{ $t('rsvp.message') }}</label>
-          <textarea
-            id="message"
-            v-model="form.message"
-            :placeholder="$t('rsvp.messagePlaceholder')"
-            rows="4"
-          ></textarea>
-        </div>
+          <button type="submit" class="submit-btn" :disabled="isSubmitting">
+            <span v-if="!isSubmitting">{{ $t('rsvp.submit') }}</span>
+            <span v-else class="loading">
+              <span class="spinner"></span>
+              {{ $t('rsvp.submitting') }}
+            </span>
+          </button>
 
-        <button type="submit" class="submit-btn" :disabled="isSubmitting">
-          <span v-if="!isSubmitting">{{ $t('rsvp.submit') }}</span>
-          <span v-else class="loading">
-            <span class="spinner"></span>
-            {{ $t('rsvp.submitting') }}
-          </span>
-        </button>
-
-        <Transition name="fade">
-          <div v-if="submitSuccess" class="success-message">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 6L9 17l-5-5"/>
-            </svg>
-            <span>{{ $t('rsvp.success') }}</span>
-          </div>
-        </Transition>
-
-        <Transition name="fade">
-          <div v-if="submitError" class="error-message">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="15" y1="9" x2="9" y2="15"/>
-              <line x1="9" y1="9" x2="15" y2="15"/>
-            </svg>
-            <span>{{ submitError }}</span>
-          </div>
-        </Transition>
-      </form>
+          <Transition name="fade">
+            <div v-if="submitError" class="error-message">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="15" y1="9" x2="9" y2="15"/>
+                <line x1="9" y1="9" x2="15" y2="15"/>
+              </svg>
+              <span>{{ submitError }}</span>
+            </div>
+          </Transition>
+        </form>
+      </Transition>
     </div>
   </section>
 </template>
@@ -129,15 +139,26 @@ const form = reactive({
   email: '',
   attending: '',
   guests: '1',
-  contribution: '',
   message: ''
 })
 
 const isSubmitting = ref(false)
 const submitSuccess = ref(false)
 const submitError = ref('')
+const rsvpId = ref('')
 
 const { locale } = useI18n()
+
+const resetForm = () => {
+  submitSuccess.value = false
+  Object.assign(form, {
+    name: '',
+    email: '',
+    attending: '',
+    guests: '1',
+    message: ''
+  })
+}
 
 const submitRsvp = async () => {
   isSubmitting.value = true
@@ -151,32 +172,21 @@ const submitRsvp = async () => {
         email: form.email,
         attending: form.attending,
         guests: form.guests,
-        contribution: form.contribution,
         message: form.message,
         locale: locale.value
       }
     })
 
     if (response.success) {
-      submitSuccess.value = true
+      // Store the RSVP ID for the memories link
+      rsvpId.value = response.id
 
       // Trigger confetti on successful submission if attending
       if (form.attending === 'yes') {
         confettiRef.value?.trigger()
       }
 
-      Object.assign(form, {
-        name: '',
-        email: '',
-        attending: '',
-        guests: '1',
-        contribution: '',
-        message: ''
-      })
-
-      setTimeout(() => {
-        submitSuccess.value = false
-      }, 5000)
+      submitSuccess.value = true
     }
   } catch (error: unknown) {
     console.error('RSVP submission failed:', error)
@@ -516,6 +526,200 @@ onMounted(() => {
   background: rgba(220, 38, 38, 0.08);
   border: 1px solid rgba(220, 38, 38, 0.2);
   border-radius: 8px;
+}
+
+/* Form fade out animation */
+.form-fade-enter-active {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-fade-leave-active {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-fade-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.form-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.95) translateY(-10px);
+  filter: blur(4px);
+}
+
+/* Success reveal animation */
+.success-reveal-enter-active {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.success-reveal-leave-active {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.success-reveal-enter-from {
+  opacity: 0;
+  transform: scale(0.8) translateY(30px);
+}
+
+.success-reveal-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+/* Success container styles */
+.success-container {
+  text-align: center;
+  padding: 3rem 2rem;
+  animation: success-bounce 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+@keyframes success-bounce {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #C4956A 0%, #E9C46A 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: icon-pop 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+  box-shadow: 0 8px 32px rgba(196, 149, 106, 0.3);
+}
+
+@keyframes icon-pop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-icon svg {
+  width: 40px;
+  height: 40px;
+  color: white;
+  stroke-width: 3;
+  animation: checkmark-draw 0.4s ease-out 0.9s both;
+}
+
+@keyframes checkmark-draw {
+  0% {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+  }
+  100% {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 0;
+  }
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gray-900);
+  margin: 0 0 0.75rem;
+  animation: text-reveal 0.5s ease-out 0.8s both;
+}
+
+.success-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--gray-600);
+  margin: 0 0 2rem;
+  line-height: 1.6;
+  animation: text-reveal 0.5s ease-out 0.9s both;
+}
+
+@keyframes text-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Memories CTA */
+.memories-cta {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(196,149,106,0.08) 0%, rgba(233,196,106,0.08) 100%);
+  border-radius: 12px;
+  animation: text-reveal 0.5s ease-out 1s both;
+}
+
+.memories-intro {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--gray-600);
+  margin: 0 0 1rem;
+  line-height: 1.6;
+}
+
+.memories-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #C4956A 0%, #D4A574 100%);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.memories-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.memories-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(184, 134, 11, 0.3);
+}
+
+.new-rsvp-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--gray-500);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: text-reveal 0.5s ease-out 1.1s both;
+}
+
+.new-rsvp-btn:hover {
+  color: var(--accent);
 }
 
 .fade-enter-active,

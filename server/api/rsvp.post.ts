@@ -76,7 +76,8 @@ export default defineEventHandler(async (event) => {
       name: rsvpRecord.name,
       attending: rsvpRecord.attending,
       guests: rsvpRecord.guests,
-      locale
+      locale,
+      rsvpId
     })
     console.log(`Confirmation email sent to: ${rsvpRecord.email}`)
   } catch (error) {

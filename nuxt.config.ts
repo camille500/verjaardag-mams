@@ -10,7 +10,9 @@ export default defineNuxtConfig({
     // Credentials are automatically provided by AWS Amplify via IAM role
     awsRegion: process.env.REGION || 'eu-central-1',
     dynamodbTableName: process.env.DYNAMODB_TABLE_NAME || 'party-rsvps',
-    sesFromEmail: process.env.SES_FROM_EMAIL || 'noreply@example.com'
+    sesFromEmail: process.env.SES_FROM_EMAIL || 'noreply@example.com',
+    s3BucketName: process.env.S3_BUCKET_NAME || 'party-photos',
+    siteUrl: process.env.SITE_URL || 'http://localhost:3000'
   },
 
   i18n: {

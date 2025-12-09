@@ -276,7 +276,19 @@ onMounted(() => {
   display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cards .card:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 600px) {
   .location {
     padding: 4rem 1.5rem;
   }
@@ -286,6 +298,10 @@ onMounted(() => {
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .cards .card:last-child {
+    max-width: 100%;
   }
 
   .card {
