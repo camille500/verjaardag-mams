@@ -28,7 +28,7 @@ export async function saveRsvp(rsvp: RsvpRecord): Promise<void> {
 
   const command = new PutCommand({
     TableName: tableName,
-    Item: rsvp // id is partition key
+    Item: rsvp 
   })
 
   await docClient.send(command)

@@ -16,6 +16,34 @@ interface EmailParams {
   locale: string
 }
 
+// Hippie flower SVG for email decoration
+const flowerSvg = `<svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="10" fill="#F4A261"/>
+  <g fill="#E76F51">
+    <ellipse cx="50" cy="22" rx="10" ry="16" />
+    <ellipse cx="50" cy="78" rx="10" ry="16" />
+    <ellipse cx="22" cy="50" rx="16" ry="10" />
+    <ellipse cx="78" cy="50" rx="16" ry="10" />
+  </g>
+</svg>`
+
+const flowerSvgTeal = `<svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="10" fill="#E9C46A"/>
+  <g fill="#2A9D8F">
+    <ellipse cx="50" cy="22" rx="10" ry="16" />
+    <ellipse cx="50" cy="78" rx="10" ry="16" />
+    <ellipse cx="22" cy="50" rx="16" ry="10" />
+    <ellipse cx="78" cy="50" rx="16" ry="10" />
+  </g>
+</svg>`
+
+const peaceSvg = `<svg width="30" height="30" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#E9C46A" stroke-width="6">
+  <circle cx="50" cy="50" r="45" />
+  <line x1="50" y1="5" x2="50" y2="95" />
+  <line x1="50" y1="50" x2="20" y2="80" />
+  <line x1="50" y1="50" x2="80" y2="80" />
+</svg>`
+
 const templates = {
   nl: {
     subjectYes: 'Bevestiging: Je komt naar het feest van Petra!',
@@ -26,48 +54,81 @@ const templates = {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #FDF6E9;">
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(180deg, #FDF6E9 0%, #FEF3E2 100%);">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-          <!-- Header -->
+        <table width="600" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(253,246,233,0.95) 100%); border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(231,111,81,0.15);">
+          <!-- Header with groovy gradient -->
           <tr>
-            <td style="background: linear-gradient(135deg, #E76F51 0%, #F4A261 100%); padding: 40px; text-align: center;">
-              <h1 style="margin: 0; color: white; font-size: 28px; font-weight: 400;">Tot op het feest!</h1>
+            <td style="background: linear-gradient(135deg, #E76F51 0%, #F4A261 50%, #E9C46A 100%); padding: 50px 40px; text-align: center; position: relative;">
+              <!-- Decorative flowers -->
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="60" style="vertical-align: top;">${flowerSvg}</td>
+                  <td style="text-align: center;">
+                    <h1 style="margin: 0; color: white; font-family: 'Playfair Display', Georgia, serif; font-size: 36px; font-weight: 400; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">Peace, Love & Party!</h1>
+                  </td>
+                  <td width="60" style="vertical-align: top; text-align: right;">${flowerSvgTeal}</td>
+                </tr>
+              </table>
             </td>
           </tr>
           <!-- Content -->
           <tr>
-            <td style="padding: 40px;">
-              <p style="font-size: 18px; color: #264653; margin: 0 0 20px;">Hoi ${name},</p>
-              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 20px;">
+            <td style="padding: 45px 40px;">
+              <p style="font-size: 20px; color: #264653; margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif;">Hoi ${name},</p>
+              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 25px;">
                 Super leuk dat je komt! We hebben je RSVP ontvangen voor het verjaardagsfeest van Petra.
               </p>
-              <table width="100%" cellpadding="0" cellspacing="0" style="background: #FDF6E9; border-radius: 12px; margin: 25px 0;">
+              <!-- Info box with hippie styling -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, rgba(231,111,81,0.08) 0%, rgba(233,196,106,0.12) 50%, rgba(42,157,143,0.08) 100%); border-radius: 16px; margin: 25px 0; border: 2px solid rgba(233,196,106,0.3);">
                 <tr>
-                  <td style="padding: 25px;">
-                    <p style="margin: 0 0 10px; font-size: 14px; color: #264653;"><strong>Datum:</strong> 18 april 2025</p>
-                    <p style="margin: 0 0 10px; font-size: 14px; color: #264653;"><strong>Locatie:</strong> De Walvis, Amsterdam</p>
-                    <p style="margin: 0; font-size: 14px; color: #264653;"><strong>Aantal personen:</strong> ${guests}</p>
+                  <td style="padding: 25px 30px;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="40" style="vertical-align: middle;">${peaceSvg}</td>
+                        <td style="padding-left: 15px;">
+                          <p style="margin: 0 0 8px; font-size: 15px; color: #264653;"><strong style="color: #E76F51;">Datum:</strong> 18 april 2025</p>
+                          <p style="margin: 0 0 8px; font-size: 15px; color: #264653;"><strong style="color: #E76F51;">Locatie:</strong> De Walvis, Amsterdam</p>
+                          <p style="margin: 0; font-size: 15px; color: #264653;"><strong style="color: #E76F51;">Aantal personen:</strong> ${guests}</p>
+                        </td>
+                      </tr>
+                    </table>
                   </td>
                 </tr>
               </table>
-              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 20px;">
+              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 25px;">
                 We kijken ernaar uit je te zien! Meer details over de exacte tijd volgen nog.
               </p>
-              <p style="font-size: 16px; color: #2A9D8F; font-style: italic; margin: 30px 0 0;">
-                Liefs,<br>De organisatie
-              </p>
+              <!-- Signature with flower -->
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="vertical-align: middle; padding-right: 12px;">${flowerSvg}</td>
+                  <td>
+                    <p style="font-size: 18px; color: #2A9D8F; font-style: italic; margin: 0; font-family: 'Playfair Display', Georgia, serif;">
+                      Liefs,<br>De organisatie
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
-          <!-- Footer -->
+          <!-- Footer with groovy gradient -->
           <tr>
-            <td style="background: #264653; padding: 25px; text-align: center;">
-              <p style="margin: 0; color: rgba(255,255,255,0.7); font-size: 13px;">
-                Petra's 60e Verjaardag
-              </p>
+            <td style="background: linear-gradient(135deg, #264653 0%, #2A9D8F 100%); padding: 30px; text-align: center;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="text-align: center;">
+                    <p style="margin: 0 0 8px; color: #E9C46A; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">Peace & Love</p>
+                    <p style="margin: 0; color: rgba(255,255,255,0.9); font-size: 14px; font-family: 'Playfair Display', Georgia, serif;">
+                      Petra's 60e Verjaardag
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
         </table>
@@ -83,39 +144,63 @@ const templates = {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #FDF6E9;">
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(180deg, #FDF6E9 0%, #FEF3E2 100%);">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-          <!-- Header -->
+        <table width="600" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(253,246,233,0.95) 100%); border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(42,157,143,0.15);">
+          <!-- Header with teal groovy gradient -->
           <tr>
-            <td style="background: linear-gradient(135deg, #2A9D8F 0%, #264653 100%); padding: 40px; text-align: center;">
-              <h1 style="margin: 0; color: white; font-size: 28px; font-weight: 400;">RSVP Ontvangen</h1>
+            <td style="background: linear-gradient(135deg, #2A9D8F 0%, #264653 100%); padding: 50px 40px; text-align: center;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="60" style="vertical-align: top;">${flowerSvgTeal}</td>
+                  <td style="text-align: center;">
+                    <h1 style="margin: 0; color: white; font-family: 'Playfair Display', Georgia, serif; font-size: 32px; font-weight: 400; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">RSVP Ontvangen</h1>
+                  </td>
+                  <td width="60" style="vertical-align: top; text-align: right;">${flowerSvgTeal}</td>
+                </tr>
+              </table>
             </td>
           </tr>
           <!-- Content -->
           <tr>
-            <td style="padding: 40px;">
-              <p style="font-size: 18px; color: #264653; margin: 0 0 20px;">Hoi ${name},</p>
+            <td style="padding: 45px 40px;">
+              <p style="font-size: 20px; color: #264653; margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif;">Hoi ${name},</p>
               <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 20px;">
                 Jammer dat je er niet bij kunt zijn! We hebben je RSVP ontvangen.
               </p>
-              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 20px;">
+              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 30px;">
                 Mocht je situatie veranderen, laat het ons dan weten!
               </p>
-              <p style="font-size: 16px; color: #2A9D8F; font-style: italic; margin: 30px 0 0;">
-                Liefs,<br>De organisatie
-              </p>
+              <!-- Signature with flower -->
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="vertical-align: middle; padding-right: 12px;">${flowerSvgTeal}</td>
+                  <td>
+                    <p style="font-size: 18px; color: #2A9D8F; font-style: italic; margin: 0; font-family: 'Playfair Display', Georgia, serif;">
+                      Liefs,<br>De organisatie
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
-          <!-- Footer -->
+          <!-- Footer with groovy gradient -->
           <tr>
-            <td style="background: #264653; padding: 25px; text-align: center;">
-              <p style="margin: 0; color: rgba(255,255,255,0.7); font-size: 13px;">
-                Petra's 60e Verjaardag
-              </p>
+            <td style="background: linear-gradient(135deg, #264653 0%, #2A9D8F 100%); padding: 30px; text-align: center;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="text-align: center;">
+                    <p style="margin: 0 0 8px; color: #E9C46A; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">Peace & Love</p>
+                    <p style="margin: 0; color: rgba(255,255,255,0.9); font-size: 14px; font-family: 'Playfair Display', Georgia, serif;">
+                      Petra's 60e Verjaardag
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
         </table>
@@ -135,48 +220,81 @@ const templates = {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #FDF6E9;">
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(180deg, #FDF6E9 0%, #FEF3E2 100%);">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-          <!-- Header -->
+        <table width="600" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(253,246,233,0.95) 100%); border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(231,111,81,0.15);">
+          <!-- Header with groovy gradient -->
           <tr>
-            <td style="background: linear-gradient(135deg, #E76F51 0%, #F4A261 100%); padding: 40px; text-align: center;">
-              <h1 style="margin: 0; color: white; font-size: 28px; font-weight: 400;">See you at the party!</h1>
+            <td style="background: linear-gradient(135deg, #E76F51 0%, #F4A261 50%, #E9C46A 100%); padding: 50px 40px; text-align: center; position: relative;">
+              <!-- Decorative flowers -->
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="60" style="vertical-align: top;">${flowerSvg}</td>
+                  <td style="text-align: center;">
+                    <h1 style="margin: 0; color: white; font-family: 'Playfair Display', Georgia, serif; font-size: 36px; font-weight: 400; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">Peace, Love & Party!</h1>
+                  </td>
+                  <td width="60" style="vertical-align: top; text-align: right;">${flowerSvgTeal}</td>
+                </tr>
+              </table>
             </td>
           </tr>
           <!-- Content -->
           <tr>
-            <td style="padding: 40px;">
-              <p style="font-size: 18px; color: #264653; margin: 0 0 20px;">Hi ${name},</p>
-              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 20px;">
+            <td style="padding: 45px 40px;">
+              <p style="font-size: 20px; color: #264653; margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif;">Hi ${name},</p>
+              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 25px;">
                 Great that you're coming! We've received your RSVP for Petra's birthday party.
               </p>
-              <table width="100%" cellpadding="0" cellspacing="0" style="background: #FDF6E9; border-radius: 12px; margin: 25px 0;">
+              <!-- Info box with hippie styling -->
+              <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, rgba(231,111,81,0.08) 0%, rgba(233,196,106,0.12) 50%, rgba(42,157,143,0.08) 100%); border-radius: 16px; margin: 25px 0; border: 2px solid rgba(233,196,106,0.3);">
                 <tr>
-                  <td style="padding: 25px;">
-                    <p style="margin: 0 0 10px; font-size: 14px; color: #264653;"><strong>Date:</strong> April 18, 2025</p>
-                    <p style="margin: 0 0 10px; font-size: 14px; color: #264653;"><strong>Location:</strong> De Walvis, Amsterdam</p>
-                    <p style="margin: 0; font-size: 14px; color: #264653;"><strong>Number of guests:</strong> ${guests}</p>
+                  <td style="padding: 25px 30px;">
+                    <table width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="40" style="vertical-align: middle;">${peaceSvg}</td>
+                        <td style="padding-left: 15px;">
+                          <p style="margin: 0 0 8px; font-size: 15px; color: #264653;"><strong style="color: #E76F51;">Date:</strong> April 18, 2025</p>
+                          <p style="margin: 0 0 8px; font-size: 15px; color: #264653;"><strong style="color: #E76F51;">Location:</strong> De Walvis, Amsterdam</p>
+                          <p style="margin: 0; font-size: 15px; color: #264653;"><strong style="color: #E76F51;">Number of guests:</strong> ${guests}</p>
+                        </td>
+                      </tr>
+                    </table>
                   </td>
                 </tr>
               </table>
-              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 20px;">
+              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 25px;">
                 We look forward to seeing you! More details about the exact time will follow.
               </p>
-              <p style="font-size: 16px; color: #2A9D8F; font-style: italic; margin: 30px 0 0;">
-                Love,<br>The organizers
-              </p>
+              <!-- Signature with flower -->
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="vertical-align: middle; padding-right: 12px;">${flowerSvg}</td>
+                  <td>
+                    <p style="font-size: 18px; color: #2A9D8F; font-style: italic; margin: 0; font-family: 'Playfair Display', Georgia, serif;">
+                      Love,<br>The organizers
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
-          <!-- Footer -->
+          <!-- Footer with groovy gradient -->
           <tr>
-            <td style="background: #264653; padding: 25px; text-align: center;">
-              <p style="margin: 0; color: rgba(255,255,255,0.7); font-size: 13px;">
-                Petra's 60th Birthday
-              </p>
+            <td style="background: linear-gradient(135deg, #264653 0%, #2A9D8F 100%); padding: 30px; text-align: center;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="text-align: center;">
+                    <p style="margin: 0 0 8px; color: #E9C46A; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">Peace & Love</p>
+                    <p style="margin: 0; color: rgba(255,255,255,0.9); font-size: 14px; font-family: 'Playfair Display', Georgia, serif;">
+                      Petra's 60th Birthday
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
         </table>
@@ -192,39 +310,63 @@ const templates = {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #FDF6E9;">
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(180deg, #FDF6E9 0%, #FEF3E2 100%);">
   <table width="100%" cellpadding="0" cellspacing="0" style="padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-          <!-- Header -->
+        <table width="600" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(253,246,233,0.95) 100%); border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(42,157,143,0.15);">
+          <!-- Header with teal groovy gradient -->
           <tr>
-            <td style="background: linear-gradient(135deg, #2A9D8F 0%, #264653 100%); padding: 40px; text-align: center;">
-              <h1 style="margin: 0; color: white; font-size: 28px; font-weight: 400;">RSVP Received</h1>
+            <td style="background: linear-gradient(135deg, #2A9D8F 0%, #264653 100%); padding: 50px 40px; text-align: center;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="60" style="vertical-align: top;">${flowerSvgTeal}</td>
+                  <td style="text-align: center;">
+                    <h1 style="margin: 0; color: white; font-family: 'Playfair Display', Georgia, serif; font-size: 32px; font-weight: 400; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">RSVP Received</h1>
+                  </td>
+                  <td width="60" style="vertical-align: top; text-align: right;">${flowerSvgTeal}</td>
+                </tr>
+              </table>
             </td>
           </tr>
           <!-- Content -->
           <tr>
-            <td style="padding: 40px;">
-              <p style="font-size: 18px; color: #264653; margin: 0 0 20px;">Hi ${name},</p>
+            <td style="padding: 45px 40px;">
+              <p style="font-size: 20px; color: #264653; margin: 0 0 20px; font-family: 'Playfair Display', Georgia, serif;">Hi ${name},</p>
               <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 20px;">
                 Sorry to hear you can't make it! We've received your RSVP.
               </p>
-              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 20px;">
+              <p style="font-size: 16px; color: #5a6c7d; line-height: 1.8; margin: 0 0 30px;">
                 If your situation changes, please let us know!
               </p>
-              <p style="font-size: 16px; color: #2A9D8F; font-style: italic; margin: 30px 0 0;">
-                Love,<br>The organizers
-              </p>
+              <!-- Signature with flower -->
+              <table cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="vertical-align: middle; padding-right: 12px;">${flowerSvgTeal}</td>
+                  <td>
+                    <p style="font-size: 18px; color: #2A9D8F; font-style: italic; margin: 0; font-family: 'Playfair Display', Georgia, serif;">
+                      Love,<br>The organizers
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
-          <!-- Footer -->
+          <!-- Footer with groovy gradient -->
           <tr>
-            <td style="background: #264653; padding: 25px; text-align: center;">
-              <p style="margin: 0; color: rgba(255,255,255,0.7); font-size: 13px;">
-                Petra's 60th Birthday
-              </p>
+            <td style="background: linear-gradient(135deg, #264653 0%, #2A9D8F 100%); padding: 30px; text-align: center;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="text-align: center;">
+                    <p style="margin: 0 0 8px; color: #E9C46A; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;">Peace & Love</p>
+                    <p style="margin: 0; color: rgba(255,255,255,0.9); font-size: 14px; font-family: 'Playfair Display', Georgia, serif;">
+                      Petra's 60th Birthday
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
         </table>
