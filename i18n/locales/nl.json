@@ -9,7 +9,7 @@
   },
   "about": {
     "title": "Over het feest",
-    "intro": "Het feest van Petra begint steeds meer vorm te krijgen! Op 18 april om [tijd volgt nog] gaan we er een groot feest van maken bij De Walvis in Amsterdam.",
+    "intro": "Het feest van Petra begint steeds meer vorm te krijgen! Op 18 april v.a. 18.00 gaan we er een groot feest van maken bij De Walvis in Amsterdam.",
     "text": "We vieren dit bijzondere moment graag samen met jou! Kom gezellig langs voor een (na)middag en avond vol plezier, lekker eten en mooie herinneringen.",
     "about_petra": "Zoals jullie weten is Petra altijd degene die voor anderen klaarstaat — van goede doelen tot iedereen om haar heen. Voor haar 60e verjaardag draaien we het een keer om: dit keer zamelen wíj iets in voor háár!",
     "entertainment": "We hebben een geweldige live band geregeld die de avond extra bijzonder maakt. Deze band speelt sinds jaar en dag op Petra’s geliefde Vlieland en brengt de hele avond heerlijke covers waar we fantastisch op kunnen dansen!",
@@ -22,6 +22,7 @@
   "rsvp": {
     "title": "RSVP",
     "intro": "Laat ons weten of je erbij kunt zijn!",
+    "sub": "Ook als je er niet bij kunt zijn, vul toch even je gegevens in en druk op de RSVP-knop. Op de volgende pagina kun je mooie herinneringen en foto’s achterlaten voor Petra’s vriendenboek — zo ben je er toch een beetje bij!",
     "name": "Naam",
     "namePlaceholder": "Je volledige naam",
     "email": "E-mailadres",
@@ -33,7 +34,7 @@
     "person": "persoon | personen",
     "contribution": "Wil je een bijdrage leveren? (optioneel)",
     "contributionPlaceholder": "Bijv. een liedje zingen, speech houden, hulp bij organisatie...",
-    "message": "Bericht (optioneel)",
+    "message": "Bericht (Bijvoorbeeld dieet wensen)",
     "messagePlaceholder": "Wil je nog iets kwijt?",
     "submit": "Verstuur RSVP",
     "submitting": "Versturen...",

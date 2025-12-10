@@ -80,7 +80,7 @@ const templates = {
           <tr>
             <td style="padding: 30px 50px; background: #FDFCFA;">
               <p style="font-size: 15px; color: #5D5D5D; line-height: 1.8; margin: 0 0 20px; text-align: center;">
-                Het feest van Petra begint steeds meer vorm te krijgen! Op 18 april om [tijd volgt nog] gaan we er een groot feest van maken bij De Walvis in Amsterdam.
+                Het feest van Petra begint steeds meer vorm te krijgen! Op 18 april v.a. 18.00 gaan we er een groot feest van maken bij De Walvis in Amsterdam.
               </p>
 
               <p style="font-size: 15px; color: #5D5D5D; line-height: 1.8; margin: 0 0 20px; text-align: center;">

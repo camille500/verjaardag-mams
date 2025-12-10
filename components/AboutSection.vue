@@ -94,7 +94,7 @@ const sectionRef = ref<HTMLElement>()
 const isVisible = ref(false)
 
 // TODO: Replace with actual Tikkie URL when available
-const tikkieUrl = ref('#')
+const tikkieUrl = ref('https://tikkie.me/pay/il4bjth88oken3clr9ok')
 
 onMounted(() => {
   const observer = new IntersectionObserver(

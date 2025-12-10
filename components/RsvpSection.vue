@@ -5,6 +5,7 @@
       <div class="header" :class="{ visible: isVisible }">
         <span class="section-label">{{ $t('rsvp.title') }}</span>
         <h2 class="section-title">{{ $t('rsvp.intro') }}</h2>
+        <span class="cta-text">{{ $t('rsvp.sub') }}</span>
       </div>
 
       <!-- Success state with animation -->

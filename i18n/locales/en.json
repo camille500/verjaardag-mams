@@ -22,6 +22,7 @@
   "rsvp": {
     "title": "RSVP",
     "intro": "Let us know if you can make it!",
+    "sub": "..",
     "name": "Name",
     "namePlaceholder": "Your full name",
     "email": "Email address",
