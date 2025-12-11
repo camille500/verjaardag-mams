@@ -30,6 +30,7 @@ export interface RsvpRecord {
   message?: string
   locale: string
   createdAt: string
+  s3FolderId: string
   memories?: MemoryItem[]
 }
 

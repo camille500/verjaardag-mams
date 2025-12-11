@@ -19,6 +19,7 @@ export async function uploadImage(
   fileBuffer: Buffer,
   fileName: string,
   contentType: string,
+  s3FolderId: string,
   uploaderName?: string,
   story?: string
 ): Promise<UploadResult> {
@@ -27,10 +28,7 @@ export async function uploadImage(
   // Generate unique key with timestamp and original filename
   const timestamp = Date.now()
   const sanitizedName = fileName.replace(/[^a-zA-Z0-9.-]/g, '_')
-  const sanitizedUploader = uploaderName
-    ? uploaderName.replace(/[^a-zA-Z0-9-]/g, '_').substring(0, 50)
-    : 'anonymous'
-  const key = `memories/${sanitizedUploader}/${timestamp}-${sanitizedName}`
+  const key = `memories/${s3FolderId}/${timestamp}-${sanitizedName}`
 
   try {
     // Upload the image with metadata

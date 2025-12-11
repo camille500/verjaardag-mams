@@ -41,6 +41,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const rsvpId = uuidv4()
+  const s3FolderId = uuidv4()
   const now = new Date().toISOString()
   const locale = body.locale || 'nl'
 
@@ -54,7 +55,8 @@ export default defineEventHandler(async (event) => {
     contribution: body.contribution?.trim() || undefined,
     message: body.message?.trim() || undefined,
     locale,
-    createdAt: now
+    createdAt: now,
+    s3FolderId
   }
 
   try {
@@ -88,6 +90,7 @@ export default defineEventHandler(async (event) => {
   return {
     success: true,
     message: 'RSVP submitted successfully',
-    id: rsvpId
+    id: rsvpId,
+    s3FolderId
   }
 })

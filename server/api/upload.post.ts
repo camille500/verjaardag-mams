@@ -1,5 +1,5 @@
 import { uploadImage } from '../utils/s3'
-import { addMemoriesToRsvp, type MemoryItem } from '../utils/dynamodb'
+import { addMemoriesToRsvp, getRsvpById, type MemoryItem } from '../utils/dynamodb'
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp']
@@ -25,7 +25,8 @@ export default defineEventHandler(async (event) => {
 
   // Extract form data
   let uploaderName = ''
-  let rsvpId = '' // Optional: link to RSVP record
+  let rsvpId = ''
+  let s3FolderId = ''
   let memoryType = 'photos' // 'photos' or 'text'
   let textMemory = ''
   const stories: Record<string, string> = {}
@@ -36,6 +37,8 @@ export default defineEventHandler(async (event) => {
       uploaderName = part.data.toString('utf-8')
     } else if (part.name === 'rsvpId' && part.data) {
       rsvpId = part.data.toString('utf-8')
+    } else if (part.name === 's3FolderId' && part.data) {
+      s3FolderId = part.data.toString('utf-8')
     } else if (part.name === 'memoryType' && part.data) {
       memoryType = part.data.toString('utf-8')
     } else if (part.name === 'textMemory' && part.data) {
@@ -54,19 +57,32 @@ export default defineEventHandler(async (event) => {
     })
   }
 
+  // Require rsvpId for all uploads
+  if (!rsvpId) {
+    throw createError({
+      statusCode: 400,
+      message: 'RSVP ID is required'
+    })
+  }
+
+  // If s3FolderId not provided directly, fetch it from the RSVP record
+  if (!s3FolderId) {
+    const rsvpRecord = await getRsvpById(rsvpId)
+    if (!rsvpRecord) {
+      throw createError({
+        statusCode: 404,
+        message: 'RSVP not found'
+      })
+    }
+    s3FolderId = rsvpRecord.s3FolderId
+  }
+
   // Handle text-only memory - stored directly in DynamoDB (no S3)
   if (memoryType === 'text') {
     if (!textMemory.trim()) {
       throw createError({
         statusCode: 400,
         message: 'Please write your memory'
-      })
-    }
-
-    if (!rsvpId) {
-      throw createError({
-        statusCode: 400,
-        message: 'RSVP ID is required for text memories'
       })
     }
 
@@ -137,11 +153,12 @@ export default defineEventHandler(async (event) => {
       continue
     }
 
-    // Upload to S3 with uploader name in the path
+    // Upload to S3 with unique folder ID
     const uploadResult = await uploadImage(
       file.data,
       file.filename,
       contentType,
+      s3FolderId,
       uploaderName,
       story
     )
